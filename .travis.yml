@@ -4,4 +4,4 @@ services:
 before_install:
   - docker pull liaohuqiu/cube-box:1.0.3
 script:
-  - sh manager.sh run_tests
+  - bash manager.sh run_tests
