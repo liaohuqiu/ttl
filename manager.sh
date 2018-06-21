@@ -72,6 +72,15 @@ function rebase() {
     echo $cmd
 }
 
+function copy() {
+    local cmd=''
+    local dst_dir="/Users/srain/git/ggl-smt-4th/Team_C"
+    cmd="cp -rf $prj_dir/projects/ $dst_dir/projects"
+    run_cmd "$cmd" || true
+    run_cmd "rm -rf $dst_dir/projects/lesson-1/contracts/Payroll.sol"
+    run_cmd "rm -rf $dst_dir/projects/lesson-2/contracts/Payroll.sol"
+}
+
 function attach() {
     local cmd="docker exec $docker_run_fg_mode $container_name bash"
     run_cmd "$cmd"
@@ -79,8 +88,8 @@ function attach() {
 
 function run_tests() {
     restart
-    local cmd='ganache-cli -a 20 -e 1000 > /dev/null'
-    cmd="$cmd & sleep 2; cd /opt/src/lesson-2"
+    local cmd='ganache-cli > /dev/null'
+    cmd="$cmd & sleep 2; cd /opt/src/lesson-1"
     cmd="$cmd; truffle test"
     local cmd="docker exec $docker_run_fg_mode $container_name bash -c '$cmd'"
     run_cmd "$cmd"
