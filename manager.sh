@@ -45,6 +45,33 @@ function restart() {
     run
 }
 
+function create_branch() {
+    local cmd=''
+    for user in 21_吴迪 22_李一楠 23_白广通 24_陈杨 25_吕翔 26_黄锦涛 27_徐斌 28_费进 29_王子卓 99_liaohuqiu; do
+        cmd='cd /Users/srain/git/ggl-smt-4th/Team_C'
+        cmd="$cmd; git checkout $user"
+        cmd="$cmd; git rebase origin/master"
+        cmd="$cmd; git push origin $user"
+        echo $cmd
+    done
+    cmd="cd /Users/srain/git/ggl-smt-4th/Team_C"
+    cmd="$cmd; git checkout master"
+    echo $cmd
+}
+
+function rebase() {
+    local cmd=''
+    for user in 21_吴迪 22_李一楠 23_白广通 24_陈杨 26_黄锦涛 27_徐斌 28_费进 29_王子卓 99_liaohuqiu; do
+        cmd='cd /Users/srain/git/ggl-smt-4th/Team_C'
+        cmd="$cmd; git checkout $user"
+        cmd="$cmd; git rebase origin/$user"
+        echo $cmd
+    done
+    cmd="cd /Users/srain/git/ggl-smt-4th/Team_C"
+    cmd="$cmd; git checkout master"
+    echo $cmd
+}
+
 function attach() {
     local cmd="docker exec $docker_run_fg_mode $container_name bash"
     run_cmd "$cmd"
