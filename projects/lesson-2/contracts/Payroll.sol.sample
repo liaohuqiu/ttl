@@ -1,38 +1,44 @@
 pragma solidity ^0.4.14;
 
 contract Payroll {
+
+    struct Employee {
+        // TODO: your code here
+    }
+
     uint constant payDuration = 30 days;
 
     address owner;
-    uint salary = 1 ether;
-    address employee;
-    uint lastPayday;
+    Employee[] employees;
 
-    function updateEmployeeAddress(address newAddress) public {
+    function Payroll() payable public {
+        owner = msg.sender;
+    }
+
+    function addEmployee(address employeeAddress, uint salary) public {
+        require(msg.sender == owner);
         // TODO: your code here
     }
 
-    function updateEmployeeSalary(uint newSalary) public {
+    function removeEmployee(address employeeId) public {
+        require(msg.sender == owner);
         // TODO: your code here
     }
 
-    function getEmployee() view public returns (address) {
-        return employee;
+    function updateEmployee(address employeeAddress, uint salary) public {
+        require(msg.sender == owner);
+        // TODO: your code here
     }
 
     function addFund() payable public returns (uint) {
         return address(this).balance;
     }
 
-    function calculateRunway() view public returns (uint) {
-        return address(this).balance / salary;
+    function calculateRunway() public view returns (uint) {
+        // TODO: your code here
     }
 
-    function getSalary() view public returns (uint) {
-        return salary;
-    }
-
-    function hasEnoughFund() view public returns (bool) {
+    function hasEnoughFund() public view returns (bool) {
         return calculateRunway() > 0;
     }
 
@@ -40,3 +46,4 @@ contract Payroll {
         // TODO: your code here
     }
 }
+
