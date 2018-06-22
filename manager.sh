@@ -59,6 +59,40 @@ function create_branch() {
     echo $cmd
 }
 
+function clone_all() {
+    local cmd=''
+    local base_path='/Users/srain/git/ggl-smt-4th'
+    local team_repo_path=''
+    for team in Team_A Team_B Team_D Team_E Team_F Team_G Team_H Team_I Team_J; do
+        team_repo_path="$base_path/$team"
+        cmd="cd $base_path"
+        cmd="$cmd; git clone git@github.com:ggl-smt-4th/$team.git $team_repo_path"
+        cmd="$cmd; cd $team_repo_path"
+        cmd="$cmd; git config user.name liaohuqiu"
+        cmd="$cmd; git config user.email liaohuqiu@gmail.com"
+        echo $cmd
+    done
+}
+
+function update_all_team() {
+    local cmd=''
+    local base_path='/Users/srain/git/ggl-smt-4th'
+    local sample_repo_path="$base_path/Team_C"
+    local team_repo_path=''
+    for team in Team_A Team_B Team_D Team_E Team_F Team_G Team_H Team_I Team_J; do
+        team_repo_path="$base_path/$team"
+        cmd="rm -rf $team_repo_path/*"
+        cmd="$cmd; cp -rf $sample_repo_path/* $team_repo_path/"
+        cmd="$cmd; cp -rf $sample_repo_path/.gitignore $team_repo_path/"
+        cmd="$cmd; cp -rf $sample_repo_path/.travis.yml $team_repo_path/"
+        cmd="$cmd; cd $team_repo_path"
+        cmd="$cmd; git add ."
+        cmd="$cmd; git commit -a -m 'update from upsteam'"
+        cmd="$cmd; git push origin master"
+        echo $cmd
+    done
+}
+
 function rebase() {
     local cmd=''
     for user in 21_吴迪 22_李一楠 23_白广通 24_陈杨 26_黄锦涛 27_徐斌 28_费进 29_王子卓 99_liaohuqiu; do
@@ -75,6 +109,8 @@ function rebase() {
 function copy() {
     local cmd=''
     local dst_dir="/Users/srain/git/ggl-smt-4th/Team_C"
+    cmd="rm -rf $dst_dir/projects/*"
+    run_cmd "$cmd" || true
     cmd="cp -rf $prj_dir/projects/ $dst_dir/projects"
     run_cmd "$cmd" || true
     run_cmd "rm -rf $dst_dir/projects/lesson-1/contracts/Payroll.sol"
