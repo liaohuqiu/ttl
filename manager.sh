@@ -87,7 +87,7 @@ function update_all_team() {
         cmd="$cmd; cp -rf $sample_repo_path/.travis.yml $team_repo_path/"
         cmd="$cmd; cd $team_repo_path"
         cmd="$cmd; git add ."
-        cmd="$cmd; git commit -a -m 'update from upsteam'"
+        cmd="$cmd; git commit -a -m 'update from sample repo'"
         cmd="$cmd; git push origin master"
         echo $cmd
     done
