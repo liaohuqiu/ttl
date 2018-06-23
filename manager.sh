@@ -81,10 +81,15 @@ function update_all_team() {
     local team_repo_path=''
     for team in Team_A Team_B Team_D Team_E Team_F Team_G Team_H Team_I Team_J; do
         team_repo_path="$base_path/$team"
-        cmd="rm -rf $team_repo_path/*"
+        cmd="cd $team_repo_path"
+        cmd="$cmd; git checkout ./"
+        cmd="$cmd; git fetch"
+        cmd="$cmd; git rebase"
+        cmd="$cmd; rm -rf $team_repo_path/*"
         cmd="$cmd; cp -rf $sample_repo_path/* $team_repo_path/"
         cmd="$cmd; cp -rf $sample_repo_path/.gitignore $team_repo_path/"
         cmd="$cmd; cp -rf $sample_repo_path/.travis.yml $team_repo_path/"
+        cmd="$cmd; git status"
         cmd="$cmd; cd $team_repo_path"
         cmd="$cmd; git add ."
         cmd="$cmd; git commit -a -m 'update from sample repo'"
