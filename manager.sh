@@ -130,7 +130,7 @@ function attach() {
 function run_tests() {
     restart
     local cmd='ganache-cli > /dev/null'
-    cmd="$cmd & sleep 2; cd /opt/src/lesson-1"
+    cmd="$cmd & sleep 2; cd /opt/src/lesson-3"
     cmd="$cmd; truffle test"
     local cmd="docker exec $docker_run_fg_mode $container_name bash -c '$cmd'"
     run_cmd "$cmd"
