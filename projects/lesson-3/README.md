@@ -19,3 +19,5 @@
     contract K2 is A, C
     contract Z is K1, K2
     ```
+
+对于非 Windows 用户，安装 docker 后，运行 `sh manager.sh run_test` 可测试合约是否满足基本要求。
