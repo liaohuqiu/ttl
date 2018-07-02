@@ -115,7 +115,7 @@ class App extends Component {
           </Layout>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
-          Payroll ©2018 老董区块链干货铺
+          Payroll ©2017 老董区块链干货铺
         </Footer>
       </Layout>
     );
