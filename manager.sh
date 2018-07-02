@@ -118,7 +118,10 @@ function copy() {
     run_cmd "$cmd" || true
     cmd="cp -rf $prj_dir/projects/ $dst_dir/projects"
     run_cmd "$cmd" || true
-    run_cmd "rm -rf $dst_dir/projects/lesson-*/contracts/Payroll.sol"
+    run_cmd "rm -rf $dst_dir/projects/lesson-1/contracts/Payroll.sol"
+    run_cmd "rm -rf $dst_dir/projects/lesson-2/contracts/Payroll.sol"
+    run_cmd "rm -rf $dst_dir/projects/lesson-3/contracts/Payroll.sol"
+    run_cmd "rm -rf $dst_dir/projects/lesson-4/contracts/Payroll.sol"
 }
 
 function attach() {

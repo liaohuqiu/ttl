@@ -5,12 +5,6 @@ import './Ownable.sol';
 
 contract Payroll is Ownable {
 
-    event AddFund(address indexed from, uint value);
-    event GetPaid(address indexed employee, uint value);
-    event AddEmployee(address indexed from, address indexed employee, uint salary);
-    event UpdateEmployee(address indexed from, address indexed employee, uint salary);
-    event RemoveEmployee(address indexed from, address indexed removed);
-
     using SafeMath for uint;
 
     /**
