@@ -1,0 +1,3 @@
+[submodule "projects/solidity-dev-class-ggc"]
+	path = projects/solidity-dev-class-ggc
+	url = git@github.com:smart-hash/solidity-dev-class-ggc.git
